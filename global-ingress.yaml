@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: global-ingress
+  annotations:
+    nginx.ingres.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
