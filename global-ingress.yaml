@@ -14,7 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: instagram-frontend.instagram-dev
+                name: instagram-frontend
                 port:
                   number: 3000
 
@@ -22,7 +22,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: instagram-backend.instagram-dev
+                name: instagram-backend
                 port:
                   number: 9000
           
@@ -30,7 +30,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: chat-frontend-service.dev-chat
+                name: chat-frontend-service
                 port:
                   number: 3000
           
@@ -38,7 +38,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: chat-sender-service.dev-chat
+                name: chat-sender-service
                 port:
                   number: 9300
 
