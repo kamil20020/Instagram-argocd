@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: global-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: poteznyzbycholud.pl
+      http:
+        paths:
+          - path: /instagram-frontend
+            pathType: Prefix
+            backend:
+              service:
+                name: instagram-frontend.instagram-dev
+                port:
+                  number: 3000
+
+          - path: /instagram-backend(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: instagram-backend.instagram-dev
+                port:
+                  number: 9000
+          
+          - path: /chat-frontend
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-frontend-service.dev-chat
+                port:
+                  number: 3000
+          
+          - path: /chat-backend-sender(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-sender-service.dev-chat
+                port:
+                  number: 9300
+
+          - path: /chat-backend-receiver(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-backend-receiver-service
+                port:
+                  number: 9300
