@@ -21,7 +21,7 @@ spec:
                   number: 3000
 
           - path: /instagram-backend(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: instagram-backend
@@ -37,7 +37,7 @@ spec:
                   number: 3000
           
           - path: /chat-backend-sender(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: chat-sender-service
@@ -45,7 +45,7 @@ spec:
                   number: 9300
 
           - path: /chat-backend-receiver(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: chat-backend-receiver-service
