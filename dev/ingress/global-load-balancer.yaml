@@ -2,10 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: global-load-balancer
-  namespace: default
+  namespace: ingress-nginx
 spec:
   selector:
-    app: global-ingress
+    app: ingress-nginx-controller
   type: LoadBalancer
   ports:
     - port: 80
