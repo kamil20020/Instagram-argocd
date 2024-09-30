@@ -18,7 +18,7 @@ spec:
               service:
                 name: instagram-frontend
                 port:
-                  number: 80
+                  number: 3000
 
           - path: /instagram-backend(/|$)(.*)
             pathType: ImplementationSpecific
@@ -34,7 +34,7 @@ spec:
               service:
                 name: chat-frontend-service
                 port:
-                  number: 80
+                  number: 3000
           
           - path: /chat-backend-sender(/|$)(.*)
             pathType: ImplementationSpecific
