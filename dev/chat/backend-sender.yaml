@@ -18,6 +18,70 @@ spec:
         - name: chat-sender
           image: kamil20/chat-sender:latest
           imagePullPolicy: Always
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: chat-db-service
+                  key: DATABASE_URL
+
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: chat-db-service
+                  key: DATABASE_NAME
+
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://$(DATABASE_URL)/$(DATABASE_NAME)"
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: chat-db-secret
+                  key: POSTGRES_USER
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chat-db-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: SPRING_RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: messages-queue-configmap
+                  key: HOST
+
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: messages-queue-configmap
+                  key: PORT
+
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: messages-queue-secret
+                  key: USERNAME
+
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: messages-queue-secret
+                  key: PASSWORD
+
+            - name: SPRING_RABBITMQ_TEMPLATE_EXCHANGE
+              valueFrom:
+                configMapKeyRef:
+                  name: messages-queue-configmap
+                  key: EXCHANGE
+
+            - name: RABBITMQ_CHAT_ROUTINGKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: messages-queue-configmap
+                  key: ROUTING_KEY
+
           ports:
             - containerPort: 9300
 ---
