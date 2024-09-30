@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: chat-sender
-          image: kamil20/chat-sender:latest
+          image: kamil20/chat-backend-sender:latest
           imagePullPolicy: Always
           env:
             - name: DATABASE_URL
