@@ -22,13 +22,13 @@ spec:
             - name: DATABASE_URL
               valueFrom:
                 configMapKeyRef:
-                  name: chat-db-service
+                  name: chat-db-configmap
                   key: DATABASE_URL
 
             - name: DATABASE_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: chat-db-service
+                  name: chat-db-configmap
                   key: DATABASE_NAME
 
             - name: SPRING_DATASOURCE_URL
