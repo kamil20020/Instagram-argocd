@@ -23,4 +23,4 @@ spec:
               value: "http://instagram-backend"
 
             - name: PUBLIC_URL
-              value: "/instagram-frontend"
+              value: "/instagram-frontend/"
