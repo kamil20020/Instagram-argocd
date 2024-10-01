@@ -8,6 +8,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.org/websocket-services: "chat-backend-receiver-service"
 spec:
   ingressClassName: nginx
   rules:
@@ -45,8 +46,8 @@ spec:
                 port:
                   number: 9200
 
-          - path: /chat-backend-receiver(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /chat-backend-receiver/ws
+            pathType: Prefix
             backend:
               service:
                 name: chat-backend-receiver-service
