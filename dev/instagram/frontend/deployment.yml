@@ -21,3 +21,6 @@ spec:
           env:
             - name: REACT_APP_API
               value: "http://instagram-backend"
+
+            - name: PUBLIC_URL
+              value: "/instagram-frontend"
