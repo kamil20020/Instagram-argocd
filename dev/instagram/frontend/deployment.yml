@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: instagram-frontend
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: instagram-frontend
@@ -16,6 +16,19 @@ spec:
         - name: instagram-frontend
           image: kamil20/instagram-frontend:latest
           imagePullPolicy: Always
+          env:
+            - name: REACT_APP_API
+              valueFrom:
+                configMapKeyRef:
+                  name: ingress-configmap
+                  key: INSTAGRAM-BACKEND
+            
+            - name: REACT_APP_CHAT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ingress-configmap
+                  key: CHAT-FRONTEND
+
           ports:
             - containerPort: 3000
       
