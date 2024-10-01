@@ -46,8 +46,8 @@ spec:
                 port:
                   number: 9200
 
-          - path: /chat-backend-receiver/(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /chat-backend-receiver/ws
+            pathType: Prefix
             backend:
               service:
                 name: chat-backend-receiver-service
