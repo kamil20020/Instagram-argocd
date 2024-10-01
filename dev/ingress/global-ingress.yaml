@@ -43,7 +43,7 @@ spec:
               service:
                 name: chat-sender-service
                 port:
-                  number: 9300
+                  number: 9200
 
           - path: /chat-backend-receiver(/|$)(.*)
             pathType: ImplementationSpecific
