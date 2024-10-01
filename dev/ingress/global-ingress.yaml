@@ -13,8 +13,8 @@ spec:
   rules:
     - http:
         paths:
-          - path: /instagram-frontend
-            pathType: Prefix
+          - path: /instagram-frontend(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: instagram-frontend
@@ -29,8 +29,8 @@ spec:
                 port:
                   number: 9000
           
-          - path: /chat-frontend
-            pathType: Prefix
+          - path: /chat-frontend(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: chat-frontend-service
